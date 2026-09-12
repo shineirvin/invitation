@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Undangan Pernikahan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/invite.css" />
+</head>
+<body>
+
+<!-- Opening cover -->
+<div id="cover" class="cover">
+  <div class="cover-photo" data-photo="cover"></div>
+  <div class="cover-scrim"></div>
+  <div class="cover-content">
+    <p class="label" data-bind="hero.kicker">The Wedding of</p>
+    <h1 class="display cover-names" data-bind="hero.names"></h1>
+    <p class="label cover-date" data-bind="hero.dateText"></p>
+    <div class="cover-guest">
+      <p class="cover-guest-to">Yth. Bapak/Ibu/Saudara/i</p>
+      <p class="cover-guest-name" id="guestName">Tamu Undangan</p>
+      <p class="cover-guest-note" data-bind="hero.openingText"></p>
+    </div>
+    <button id="openBtn" class="btn">Buka Undangan</button>
+  </div>
+</div>
+
+<!-- Fixed photo backdrop (desktop) -->
+<div class="backdrop" aria-hidden="true">
+  <div class="backdrop-photo" data-photo="cover"></div>
+  <div class="backdrop-scrim"></div>
+  <div class="backdrop-caption">
+    <p class="label" data-bind="hero.kicker">The Wedding of</p>
+    <p class="display backdrop-names" data-bind="hero.names"></p>
+  </div>
+</div>
+
+<!-- Menu -->
+<button id="menuBtn" class="menu-btn" aria-label="Menu">
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+</button>
+<nav id="menu" class="menu" hidden>
+  <a href="#home">Home</a>
+  <a href="#couple">Bride and Groom</a>
+  <a href="#events">Wedding Event</a>
+  <a href="#story">Journey of Love</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#rsvp">RSVP</a>
+  <a href="#gift">Gift</a>
+  <button id="menuClose" class="menu-close">Close</button>
+</nav>
+
+<main class="column" id="column">
+
+  <!-- Home -->
+  <section class="screen home" id="home">
+    <div class="home-head">
+      <p class="label" data-bind="hero.kicker">The Wedding of</p>
+      <h1 class="display home-names" data-bind="hero.names"></h1>
+      <p class="label home-date" data-bind="hero.dateText"></p>
+    </div>
+    <div class="home-verse reveal">
+      <p class="quote" data-bind="verse.text"></p>
+      <p class="quote-source" data-bind="verse.source"></p>
+    </div>
+  </section>
+
+  <!-- Couple -->
+  <section class="section couple" id="couple">
+    <h2 class="display section-title reveal">Bride and Groom</h2>
+    <div class="person-slide reveal" id="groomCard">
+      <div class="person-bg" data-photo="groom" aria-hidden="true"></div>
+      <div class="person-info">
+        <h3 class="display person-name" data-bind="couple.groom.fullName"></h3>
+        <p class="person-parents" data-bind="couple.groom.parents"></p>
+        <a class="person-ig" data-ig="groom" target="_blank" rel="noopener" hidden>Instagram</a>
+      </div>
+    </div>
+    <div class="person-slide reveal" id="brideCard">
+      <div class="person-bg" data-photo="bride" aria-hidden="true"></div>
+      <div class="person-info">
+        <h3 class="display person-name" data-bind="couple.bride.fullName"></h3>
+        <p class="person-parents" data-bind="couple.bride.parents"></p>
+        <a class="person-ig" data-ig="bride" target="_blank" rel="noopener" hidden>Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events -->
+  <section class="section" id="events">
+    <h2 class="display section-title reveal">Wedding Event</h2>
+    <div id="eventList"></div>
+  </section>
+
+  <!-- Save the date -->
+  <section class="section" id="savethedate">
+    <h2 class="display section-title reveal">Save the Date</h2>
+    <div class="count-grid reveal" id="countGrid">
+      <div><b class="display" id="cd-d">0</b><span>Hari</span></div>
+      <div><b class="display" id="cd-h">0</b><span>Jam</span></div>
+      <div><b class="display" id="cd-m">0</b><span>Menit</span></div>
+      <div><b class="display" id="cd-s">0</b><span>Detik</span></div>
+    </div>
+    <a id="calendarBtn" class="btn reveal" target="_blank" rel="noopener">Simpan ke Kalender</a>
+  </section>
+
+  <!-- Journey of love -->
+  <section class="section" id="story">
+    <h2 class="display section-title reveal">Journey of Love</h2>
+    <p class="label story-sub reveal" data-bind="hero.names"></p>
+    <div class="timeline" id="storyList"></div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section" id="gallery">
+    <h2 class="display section-title reveal">Gallery</h2>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </section>
+
+  <!-- RSVP + wishes -->
+  <section class="section" id="rsvp">
+    <h2 class="display section-title reveal">RSVP</h2>
+    <p class="section-note reveal">Mohon konfirmasi kehadiran Anda dan tinggalkan ucapan untuk kedua mempelai.</p>
+    <form id="wishForm" class="reveal">
+      <label>Nama
+        <input name="name" maxlength="80" required placeholder="Nama Anda" />
+      </label>
+      <label>Ucapan &amp; doa
+        <textarea name="message" maxlength="1000" rows="3" required placeholder="Tulis ucapan dan doa Anda"></textarea>
+      </label>
+      <div class="rsvp-row">
+        <label>Kehadiran
+          <select name="attendance">
+            <option value="hadir">Hadir</option>
+            <option value="tidak">Berhalangan</option>
+            <option value="ragu">Belum pasti</option>
+          </select>
+        </label>
+        <label>Jumlah tamu
+          <select name="guests">
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+          </select>
+        </label>
+      </div>
+      <button class="btn" type="submit">Kirim</button>
+      <p class="form-note" id="wishNote" hidden></p>
+    </form>
+    <div class="wish-list" id="wishList"></div>
+  </section>
+
+  <!-- Gift -->
+  <section class="section" id="gift">
+    <h2 class="display section-title reveal">Wedding Gift</h2>
+    <p class="section-note reveal" data-bind="gift.note"></p>
+    <div id="accountList"></div>
+    <div class="gift-address reveal" id="giftAddress" hidden>
+      <p class="label">Kirim Hadiah</p>
+      <p data-bind="gift.address"></p>
+    </div>
+  </section>
+
+  <!-- Closing -->
+  <footer class="section closing" id="closing">
+    <p class="section-note reveal" data-bind="closing"></p>
+    <p class="label reveal">The Wedding of</p>
+    <p class="display closing-names reveal" data-bind="hero.names"></p>
+    <p class="colophon reveal" data-bind="hero.dateText"></p>
+  </footer>
+
+</main>
+
+<!-- Gallery lightbox -->
+<div id="lightbox" class="lightbox" hidden>
+  <button class="lb-close" aria-label="Tutup">&times;</button>
+  <button class="lb-prev" aria-label="Foto sebelumnya">&#8249;</button>
+  <img class="lb-img" id="lbImg" alt="Foto galeri" />
+  <button class="lb-next" aria-label="Foto berikutnya">&#8250;</button>
+  <p class="lb-count" id="lbCount"></p>
+</div>
+
+<button id="musicBtn" class="music-btn" hidden aria-label="Putar / jeda musik">
+  <svg class="ic-on" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg>
+  <svg class="ic-off" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm14.6 3 2.7-2.7-1.1-1.1-2.7 2.7-2.7-2.7-1.1 1.1 2.7 2.7-2.7 2.7 1.1 1.1 2.7-2.7 2.7 2.7 1.1-1.1-2.7-2.7z"/></svg>
+</button>
+<audio id="bgMusic" loop preload="none"></audio>
+
+<script>window.SITE={"meta":{"title":"Undangan Pernikahan Irvin & Minfang","whatsapp":"","sheetsUrl":"https://script.google.com/macros/s/AKfycbx2dYeWamUfTAVXL6oavBkb2A9b5Y5qqE8UqofUMscqI0iHuo2mv4u4uxJ87GaEp4UJ/exec"},"hero":{"kicker":"The Wedding of","names":"Irvin & Minfang","dateISO":"2026-11-08T03:00:00.000Z","dateText":"Minggu, 8 November 2026","coverPhoto":"uploads/mtyd9cvj-efa96e30.jpg","openingText":"Tanpa mengurangi rasa hormat, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir di acara pernikahan kami."},"verse":{"text":"Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia.","source":"Matius 19 : 6"},"couple":{"groom":{"name":"Irvin","fullName":"Irvin Jefferson","photo":"uploads/mtyeje65-28ac5dfe.jpg","parents":"Putra dari Bapak Jap Ban Lim & Ibu Lie fong","instagram":""},"bride":{"name":"Minfang","fullName":"Chang Minfang","photo":"uploads/mtyejnuy-81a930ec.jpg","parents":"Putri dari Bapak CHang KUEN song & Ibu Diah Sandarin","instagram":""}},"events":[{"name":"Pemberkatan & Resepsi","dateText":"Minggu, 8 November 2026","timeText":"Pemberkatan  12.30 – 14.00 WIB\nResepsi  18.30 – 21.00 WIB","venue":"Fortune Star","address":"Jl. Kunir No. 2 - Kota Tua Pinangsia - Taman Sari Jakarta Barat","mapsUrl":"https://maps.app.goo.gl/ct66wGupvNjmQ6ff7"}],"story":[],"gallery":[{"id":"c00bae67-4114-4836-b6bd-47c3f4a15a62","type":"image","src":"uploads/mtyetqmi-2070cf18.jpg"},{"id":"7bd26fee-ac7a-4e98-b992-04e0c03978f8","type":"image","src":"uploads/mtyetzwr-800ad918.jpg"},{"id":"422b0360-dac2-40cd-a9e0-eebf149c2469","type":"image","src":"uploads/mtyeuka9-fc938685.jpg"},{"id":"2e22cdb1-b7dc-4926-bca1-ff96d703b38c","type":"image","src":"uploads/mtyev1lu-2ec91e16.jpg"}],"music":"uploads/mtyes2ue-b2173df7.mp3","gift":{"note":"Doa restu Anda adalah hadiah terindah bagi kami. Namun apabila memberi merupakan ungkapan tanda kasih, kami dengan senang hati menerimanya.","accounts":[{"bank":"BCA","number":"5290192007","holder":"Irvin Jefferson"}],"address":""},"closing":"Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.","rsvpEnabled":true,"backgrounds":{"savethedate":"","couple":"","events":"uploads/mtygg3z7-1f7447d0.jpeg"}};window.WISHES=[{"id":"80f1d498-500e-4f2d-ad9a-def804925e74","name":"Jap Ban Lim dan Istri","message":"Selamat menempuh hidup baru! Semoga bahagia selalu.","attendance":"hadir","guests":2,"createdAt":"2026-09-12T10:50:20.698Z"}];</script>
+<script src="js/invite.js"></script>
+</body>
+</html>
