@@ -6,7 +6,7 @@
 <title>Undangan Pernikahan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/invite.css" />
 </head>
 <body>
@@ -60,6 +60,7 @@
     <div class="home-head">
       <p class="label" data-bind="hero.kicker">The Wedding of</p>
       <h1 class="display home-names" data-bind="hero.names"></h1>
+      <span class="ornament sm" aria-hidden="true"></span>
       <p class="label home-date" data-bind="hero.dateText"></p>
     </div>
     <div class="home-verse reveal">
@@ -71,7 +72,8 @@
   <!-- Couple -->
   <section class="section couple" id="couple">
     <h2 class="display section-title reveal">Bride and Groom</h2>
-    <div class="person-slide reveal" id="groomCard">
+    <span class="ornament reveal" aria-hidden="true"></span>
+    <div class="person-slide frame reveal" id="groomCard">
       <div class="person-bg" data-photo="groom" aria-hidden="true"></div>
       <div class="person-info">
         <h3 class="display person-name" data-bind="couple.groom.fullName"></h3>
@@ -79,7 +81,7 @@
         <a class="person-ig" data-ig="groom" target="_blank" rel="noopener" hidden>Instagram</a>
       </div>
     </div>
-    <div class="person-slide reveal" id="brideCard">
+    <div class="person-slide frame reveal" id="brideCard">
       <div class="person-bg" data-photo="bride" aria-hidden="true"></div>
       <div class="person-info">
         <h3 class="display person-name" data-bind="couple.bride.fullName"></h3>
@@ -91,40 +93,65 @@
 
   <!-- Events -->
   <section class="section" id="events">
-    <h2 class="display section-title reveal">Wedding Event</h2>
-    <div id="eventList"></div>
+    <div class="frame reveal">
+      <span class="ornament" aria-hidden="true"></span>
+      <h2 class="display section-title">Wedding Event</h2>
+      <div id="eventList"></div>
+      <span class="ornament flip" aria-hidden="true"></span>
+    </div>
   </section>
 
   <!-- Save the date -->
   <section class="section" id="savethedate">
-    <h2 class="display section-title reveal">Save the Date</h2>
-    <div class="count-grid reveal" id="countGrid">
-      <div><b class="display" id="cd-d">0</b><span>Hari</span></div>
-      <div><b class="display" id="cd-h">0</b><span>Jam</span></div>
-      <div><b class="display" id="cd-m">0</b><span>Menit</span></div>
-      <div><b class="display" id="cd-s">0</b><span>Detik</span></div>
+    <div class="frame reveal">
+      <span class="ornament" aria-hidden="true"></span>
+      <h2 class="display section-title">Save the Date</h2>
+      <div class="count-grid" id="countGrid">
+        <div><b class="display" id="cd-d">0</b><span>Hari</span></div>
+        <div><b class="display" id="cd-h">0</b><span>Jam</span></div>
+        <div><b class="display" id="cd-m">0</b><span>Menit</span></div>
+        <div><b class="display" id="cd-s">0</b><span>Detik</span></div>
+      </div>
+      <a id="calendarBtn" class="btn" target="_blank" rel="noopener">Simpan ke Kalender</a>
+      <span class="ornament flip" aria-hidden="true"></span>
     </div>
-    <a id="calendarBtn" class="btn reveal" target="_blank" rel="noopener">Simpan ke Kalender</a>
   </section>
 
   <!-- Journey of love -->
   <section class="section" id="story">
-    <h2 class="display section-title reveal">Journey of Love</h2>
-    <p class="label story-sub reveal" data-bind="hero.names"></p>
-    <div class="timeline" id="storyList"></div>
+    <div class="frame reveal">
+      <span class="ornament" aria-hidden="true"></span>
+      <h2 class="display section-title">Journey of Love</h2>
+      <p class="label story-sub" data-bind="hero.names"></p>
+      <div class="timeline" id="storyList"></div>
+      <span class="ornament flip" aria-hidden="true"></span>
+    </div>
   </section>
 
   <!-- Gallery -->
   <section class="section" id="gallery">
-    <h2 class="display section-title reveal">Gallery</h2>
-    <div class="gallery-grid" id="galleryGrid"></div>
+    <div class="frame reveal">
+      <span class="ornament" aria-hidden="true"></span>
+      <h2 class="display section-title">Gallery</h2>
+      <div class="gallery-carousel">
+      <div class="gallery-rail" id="galleryGrid"></div>
+      <button type="button" class="rail-nav rail-prev" id="galleryPrev" aria-label="Foto sebelumnya" hidden>&#8249;</button>
+      <button type="button" class="rail-nav rail-next" id="galleryNext" aria-label="Foto berikutnya" hidden>&#8250;</button>
+    </div>
+      <div class="rail-foot">
+        <button type="button" class="rail-all" id="galleryAllBtn" hidden>See all</button>
+      </div>
+      <span class="ornament flip" aria-hidden="true"></span>
+    </div>
   </section>
 
   <!-- RSVP + wishes -->
   <section class="section" id="rsvp">
-    <h2 class="display section-title reveal">RSVP</h2>
-    <p class="section-note reveal">Mohon konfirmasi kehadiran Anda dan tinggalkan ucapan untuk kedua mempelai.</p>
-    <form id="wishForm" class="reveal">
+    <div class="frame reveal">
+    <span class="ornament" aria-hidden="true"></span>
+    <h2 class="display section-title">RSVP</h2>
+    <p class="section-note">Mohon konfirmasi kehadiran Anda dan tinggalkan ucapan untuk kedua mempelai.</p>
+    <form id="wishForm">
       <label>Nama
         <input name="name" maxlength="80" required placeholder="Nama Anda" />
       </label>
@@ -149,28 +176,50 @@
       <p class="form-note" id="wishNote" hidden></p>
     </form>
     <div class="wish-list" id="wishList"></div>
+    <div class="wish-pager" id="wishPager" hidden>
+      <button type="button" id="wishPrev" aria-label="Ucapan sebelumnya">&#8249;</button>
+      <span id="wishPageInfo"></span>
+      <button type="button" id="wishNext" aria-label="Ucapan berikutnya">&#8250;</button>
+    </div>
+    <span class="ornament flip" aria-hidden="true"></span>
+    </div>
   </section>
 
   <!-- Gift -->
   <section class="section" id="gift">
-    <h2 class="display section-title reveal">Wedding Gift</h2>
-    <p class="section-note reveal" data-bind="gift.note"></p>
-    <div id="accountList"></div>
-    <div class="gift-address reveal" id="giftAddress" hidden>
+    <div class="frame reveal">
+      <span class="ornament" aria-hidden="true"></span>
+      <h2 class="display section-title">Wedding Gift</h2>
+      <p class="section-note" data-bind="gift.note"></p>
+      <div id="accountList"></div>
+      <div class="gift-address" id="giftAddress" hidden>
       <p class="label">Kirim Hadiah</p>
       <p data-bind="gift.address"></p>
+      </div>
+      <span class="ornament flip" aria-hidden="true"></span>
     </div>
   </section>
 
   <!-- Closing -->
   <footer class="section closing" id="closing">
-    <p class="section-note reveal" data-bind="closing"></p>
-    <p class="label reveal">The Wedding of</p>
-    <p class="display closing-names reveal" data-bind="hero.names"></p>
-    <p class="colophon reveal" data-bind="hero.dateText"></p>
+    <div class="frame reveal">
+      <span class="ornament" aria-hidden="true"></span>
+      <p class="section-note" data-bind="closing"></p>
+      <p class="label">The Wedding of</p>
+      <p class="display closing-names" data-bind="hero.names"></p>
+      <p class="colophon" data-bind="hero.dateText"></p>
+      <span class="ornament flip" aria-hidden="true"></span>
+    </div>
   </footer>
 
 </main>
+
+<!-- Semua foto -->
+<div id="galleryAll" class="gallery-all" hidden>
+  <button class="ga-close" aria-label="Tutup">&times;</button>
+  <p class="label ga-title">Gallery</p>
+  <div class="gallery-grid" id="galleryAllGrid"></div>
+</div>
 
 <!-- Gallery lightbox -->
 <div id="lightbox" class="lightbox" hidden>
@@ -187,7 +236,7 @@
 </button>
 <audio id="bgMusic" loop preload="none"></audio>
 
-<script>window.SITE={"meta":{"title":"Undangan Pernikahan Irvin & Minfang","whatsapp":"","sheetsUrl":"https://script.google.com/macros/s/AKfycbx2dYeWamUfTAVXL6oavBkb2A9b5Y5qqE8UqofUMscqI0iHuo2mv4u4uxJ87GaEp4UJ/exec"},"hero":{"kicker":"The Wedding of","names":"Irvin & Minfang","dateISO":"2026-11-08T03:00:00.000Z","dateText":"Minggu, 8 November 2026","coverPhoto":"uploads/mtyd9cvj-efa96e30.jpg","openingText":"Tanpa mengurangi rasa hormat, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir di acara pernikahan kami."},"verse":{"text":"Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia.","source":"Matius 19 : 6"},"couple":{"groom":{"name":"Irvin","fullName":"Irvin Jefferson","photo":"uploads/mtyeje65-28ac5dfe.jpg","parents":"Putra dari Bapak Jap Ban Lim & Ibu Lie fong","instagram":""},"bride":{"name":"Minfang","fullName":"Chang Minfang","photo":"uploads/mtyejnuy-81a930ec.jpg","parents":"Putri dari Bapak CHang KUEN song & Ibu Diah Sandarin","instagram":""}},"events":[{"name":"Pemberkatan & Resepsi","dateText":"Minggu, 8 November 2026","timeText":"Pemberkatan  12.30 – 14.00 WIB\nResepsi  18.30 – 21.00 WIB","venue":"Fortune Star","address":"Jl. Kunir No. 2 - Kota Tua Pinangsia - Taman Sari Jakarta Barat","mapsUrl":"https://maps.app.goo.gl/ct66wGupvNjmQ6ff7"}],"story":[],"gallery":[{"id":"c00bae67-4114-4836-b6bd-47c3f4a15a62","type":"image","src":"uploads/mtyetqmi-2070cf18.jpg"},{"id":"7bd26fee-ac7a-4e98-b992-04e0c03978f8","type":"image","src":"uploads/mtyetzwr-800ad918.jpg"},{"id":"422b0360-dac2-40cd-a9e0-eebf149c2469","type":"image","src":"uploads/mtyeuka9-fc938685.jpg"},{"id":"2e22cdb1-b7dc-4926-bca1-ff96d703b38c","type":"image","src":"uploads/mtyev1lu-2ec91e16.jpg"}],"music":"uploads/mtyes2ue-b2173df7.mp3","gift":{"note":"Doa restu Anda adalah hadiah terindah bagi kami. Namun apabila memberi merupakan ungkapan tanda kasih, kami dengan senang hati menerimanya.","accounts":[{"bank":"BCA","number":"5290192007","holder":"Irvin Jefferson"}],"address":""},"closing":"Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.","rsvpEnabled":true,"backgrounds":{"savethedate":"","couple":"","events":"uploads/mtygg3z7-1f7447d0.jpeg"}};window.WISHES=[{"id":"80f1d498-500e-4f2d-ad9a-def804925e74","name":"Jap Ban Lim dan Istri","message":"Selamat menempuh hidup baru! Semoga bahagia selalu.","attendance":"hadir","guests":2,"createdAt":"2026-09-12T10:50:20.698Z"}];</script>
+<script>window.SITE={"meta":{"title":"Undangan Pernikahan Irvin & Minfang","whatsapp":"","sheetsUrl":"https://script.google.com/macros/s/AKfycbx2dYeWamUfTAVXL6oavBkb2A9b5Y5qqE8UqofUMscqI0iHuo2mv4u4uxJ87GaEp4UJ/exec","publicUrl":"https://shineirvin.github.io/invitation/"},"hero":{"kicker":"The Wedding of","names":"Irvin & Minfang","dateISO":"2026-11-08T03:00:00.000Z","dateText":"Minggu, 8 November 2026","coverPhoto":"uploads/mtyd9cvj-efa96e30.jpg","openingText":"Tanpa mengurangi rasa hormat, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir di acara pernikahan kami."},"verse":{"text":"Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia.","source":"Matius 19 : 6"},"couple":{"groom":{"name":"Irvin","fullName":"Irvin Jefferson","photo":"uploads/mucgqj4w-358fbedb.jpg","parents":"Putra dari Bapak Jap Ban Lim & Ibu Lie fong","instagram":""},"bride":{"name":"Minfang","fullName":"Chang Minfang","photo":"uploads/mu2sir22-073242ff.jpg","parents":"Putri dari Bapak Chang Kuen Song+ & Ibu Diah Sandarin","instagram":""}},"events":[{"name":"Pemberkatan & Resepsi","dateText":"Minggu, 8 November 2026","timeText":"Pemberkatan  12.30 – 14.00 WIB\nResepsi  18.30 – 21.00 WIB","venue":"Fortune Star","address":"Jl. Kunir No. 2 - Kota Tua Pinangsia - Taman Sari Jakarta Barat","mapsUrl":"https://maps.app.goo.gl/ct66wGupvNjmQ6ff7"}],"story":[],"gallery":[{"id":"7d7603c7-1235-4631-bc0b-f0eb059cea98","type":"image","src":"uploads/mu2si21f-b496f9b0.jpg"},{"id":"0e09387a-23c2-4113-94cf-cf2e70bae681","type":"image","src":"uploads/mu2si21y-5810603a.jpg"},{"id":"80cee823-9863-40f6-85f9-f0109b4c38b2","type":"image","src":"uploads/mu2si25b-d86b9d28.jpg"},{"id":"0f809765-7b29-44a4-b97f-05b5c56eaa41","type":"image","src":"uploads/mu2si287-f213d05b.jpg"},{"id":"a4f5bf42-9209-43c9-b795-ce8b8588f9e2","type":"image","src":"uploads/mu2si28s-18d0b8fa.jpg"},{"id":"91bf6385-15bd-4b0e-8f73-3d116ce091a3","type":"image","src":"uploads/mu2si2ce-17a2a22c.jpg"},{"id":"f23be128-30c8-4933-a2b8-683a4048b83a","type":"image","src":"uploads/mu2si2dw-39838456.jpg"},{"id":"9e8837da-28b8-44e4-a5fd-fb8d53cf3ac1","type":"image","src":"uploads/mu2si2fk-9f0ff130.jpg"},{"id":"1d9bdb9c-86ef-4888-a923-85d796aa5505","type":"image","src":"uploads/mu2si2qy-983f9265.jpg"},{"id":"db7702c6-0a67-4b5e-a795-b4faee0973a4","type":"image","src":"uploads/mu2si2x2-b4833c0c.jpg"},{"id":"6b32609c-32d8-4683-a4c3-fa0a2d93b0da","type":"image","src":"uploads/mu2si2xp-c12cd199.jpg"},{"id":"3810e6f6-cb1d-43aa-8b4d-c559d9969cd1","type":"image","src":"uploads/mu2si2y1-a5eba542.jpg"},{"id":"91d42625-c336-4907-83ef-317bb6874da7","type":"image","src":"uploads/mu2si2yc-af2663fa.jpg"},{"id":"8c19557e-4d9e-44b2-bfce-475c8e5b3f1b","type":"image","src":"uploads/mu2si2yn-60bb2241.jpg"},{"id":"42ca7f96-f6a0-4e0d-a6e6-e9dc7c90e965","type":"image","src":"uploads/mu2si2yu-a508fdd6.jpg"},{"id":"f555b6e5-f07c-40d6-b492-c22e6d145da6","type":"image","src":"uploads/mu2si2z2-d7af58f9.jpg"},{"id":"0902f9cd-08ab-45e9-b256-98fdf8492f89","type":"image","src":"uploads/mu2si2zb-b5546515.jpg"},{"id":"d9416ace-77e0-4cff-a313-b3363eb06caf","type":"image","src":"uploads/mu2si2zh-ec5c1697.jpg"},{"id":"d8a9fdda-75f9-4d06-9cf5-4389bc1fb318","type":"image","src":"uploads/mu2si2zr-bb850173.jpg"},{"id":"8c1f2c30-8c5e-4c2b-9ca8-6fd41ad952ac","type":"image","src":"uploads/mu2si307-00a6693c.jpg"},{"id":"83767a79-37d8-43f4-ab64-0c7b05511570","type":"image","src":"uploads/mu2si30g-e9d5ea38.jpg"},{"id":"12d06c23-37f1-4e67-8f75-7c87de43ded3","type":"image","src":"uploads/mu2si30x-afe7eb7b.jpg"},{"id":"09d291d4-21ee-473c-9cd8-75d6299e2565","type":"image","src":"uploads/mu2si311-1cc5149d.jpg"},{"id":"780595ca-176a-4c86-975e-f4462de23cd2","type":"image","src":"uploads/mu2si314-1ec7265e.jpg"}],"music":"uploads/mtyes2ue-b2173df7.mp3","gift":{"note":"Doa restu Anda adalah hadiah terindah bagi kami. Namun apabila memberi merupakan ungkapan tanda kasih, kami dengan senang hati menerimanya.","accounts":[{"bank":"BCA","number":"5290192007","holder":"Irvin Jefferson"}],"address":""},"closing":"Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.","rsvpEnabled":true,"backgrounds":{"savethedate":"uploads/mu3yo5y4-66cccb7a.jpg","couple":"","events":"uploads/mu3xtz6t-74db7e02.png","home":"uploads/mu3v6obq-fa52dbba.jpg","gallery":"uploads/mu3yjyfb-604aec38.jpg","gift":"uploads/mu405af8-4cebb0f1.jpeg"},"photoPos":{"bg-home":"36% 50%","bg-savethedate":"50% 21%","bg-gift":"50% 0%","groom":"0% 43%","bride":"50% 21%"},"style":{"frames":true},"photoZoom":{"groom":1.4,"bride":1}};window.WISHES=[{"id":"80f1d498-500e-4f2d-ad9a-def804925e74","name":"Jap Ban Lim dan Istri","message":"Selamat menempuh hidup baru! Semoga bahagia selalu.","attendance":"hadir","guests":2,"createdAt":"2026-09-12T10:50:20.698Z"}];</script>
 <script src="js/invite.js"></script>
 </body>
 </html>
